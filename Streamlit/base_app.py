@@ -24,13 +24,13 @@
 # Streamlit dependencies
 import streamlit as st
 import joblib,os
-
+from sklearn.feature_extraction.text import TfidfVectorizer
 # Data dependencies
 import pandas as pd
 
 # Vectorizer
-#news_vectorizer = open("streamlit/tfidfvect.pkl","rb")
-#test_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
+news_vectorizer = open("vectorizer.pkl","rb")
+test_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
 
 # Load your raw data
 #raw = pd.read_csv("streamlit/train.csv")
@@ -55,6 +55,13 @@ def main():
 		# You can read a markdown file from supporting resources folder
 		st.markdown("Some information here")
 
+	models = {
+    "SVM": "SVM.pkl",
+    "Naive_Bayes": "Naive_Bayes.pkl"}
+
+	model_choice = st.sidebar.selectbox("Select Model", list(models.keys()))
+
+
 		
 	# Building out the predication page
 	if selection == "Prediction":
@@ -64,16 +71,27 @@ def main():
 
 		if st.button("Classify"):
 			# Transforming user input with vectorizer
+			#vectorizer = TfidfVectorizer()
+			#X_vectorized = vectorizer.fit_transform([news_text]) 
 			vect_text = test_cv.transform([news_text]).toarray()
 			# Load your .pkl file with the model of your choice + make predictions
 			# Try loading in multiple models to give the user a choice
-			predictor = joblib.load(open(os.path.join("streamlit/Logistic_regression.pkl"),"rb"))
+			#predictor = joblib.load(open(os.path.join("streamlit/Logistic_regression.pkl"),"rb"))
+			predictor = joblib.load(open(models[model_choice], "rb"))
+
 			prediction = predictor.predict(vect_text)
 
 			# When model has successfully run, will print prediction
 			# You can use a dictionary or similar structure to make this output
 			# more human interpretable.
-			st.success("Text Categorized as: {}".format(prediction))
+			#st.success("Text Categorized as: {}".format(prediction))
+			st.success(f"Text Categorized as: {prediction[0]} using {model_choice}")
+
+			#if hasattr(predictor, "predict_proba"):
+    			#proba = predictor.predict_proba(vect_text)
+   				#st.write("Prediction Probabilities:", proba)
+
+
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
