@@ -137,9 +137,10 @@ Congratulations! You've now officially deployed your first web application!
 
 | Name                                                                                        |  Email              
 |---------------------------------------------------------------------------------------------|--------------------             
-| [Jana Liebenberg-Fouche](https://github.com/Jana-Liebenberg)                                | jliebenberg-fouche@sandtech.com
-| [Edmund Dotsey](https://github.com/Edotsey)                                                 | edotsey@sandtech.com
-| [Farayi Myambo](https://github.com/Farayi-Explore)                                          | fmyambo@sandtech.com
+| Ganizo Chilambe                             | ganizo.chilambe@unilever.com
+| Muzaffar Khan                                               | muzi.khan06@icloud.com
+| Vukosi Chauke                                         | vukosiremember@gmail.com
+| Senzo Sithole                                         | sithole.sm77@gmail.com
 
 
 
