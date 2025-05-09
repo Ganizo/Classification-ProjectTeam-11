@@ -5,7 +5,7 @@
 # Analysing News Articles Dataset
 
 
-![](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white) [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](URL_TO_YOUR_APP)
+![](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white) [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://stunning-waddle-95jgjx6j79xhpr5v-8501.app.github.dev/)
 
 <div id="main image" align="center">
   <img src="https://github.com/ereshia/2401FTDS_Classification_Project/blob/main/announcement-article-articles-copy-coverage.jpg" width="550" height="300" alt=""/>
@@ -27,7 +27,7 @@ The aim is to provide you with a hands-on demonstration of applying machine lear
 
 
 ## 2. Dataset <a class="anchor" id="dataset"></a>
-The dataset is comprised of news articles that need to be classified into categories based on their content, including `Business`, `Technology`, `Sports`, `Education`, and `Entertainment`. You can find both the `train.csv` and `test.csv` datasets [here](https://github.com/Jana-Liebenberg/2401PTDS_Classification_Project/tree/main/Data/processed). 
+The dataset is comprised of news articles that need to be classified into categories based on their content, including `Business`, `Technology`, `Sports`, `Education`, and `Entertainment`. You can find both the `train.csv` and `test.csv` datasets [here](https://github.com/Ganizo/Classification-ProjectTeam-11/tree/main/Data/processed). 
 
 **Dataset Features:**
 | **Column**                                                                                  | **Description**              

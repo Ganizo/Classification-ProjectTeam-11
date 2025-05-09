@@ -24,6 +24,7 @@
 # Streamlit dependencies
 import streamlit as st
 import joblib,os
+from pathlib import Path
 from sklearn.feature_extraction.text import TfidfVectorizer
 # Data dependencies
 import pandas as pd
@@ -34,6 +35,10 @@ test_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl fi
 
 # Load your raw data
 #raw = pd.read_csv("streamlit/train.csv")
+
+
+def read_markdown_file(markdown_file):
+    	return Path(markdown_file).read_text()
 
 # The main function where we will build the actual app
 def main():
@@ -46,22 +51,35 @@ def main():
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
-	options = ["Prediction", "Information"]
+	options = ["Prediction", "Information","Model Stats"]
 	selection = st.sidebar.selectbox("Choose Option", options)
+
+	# Specify your markdown file name/path
+	markdown_file = '../README.md'  
+	markdown_content = read_markdown_file(markdown_file)
 
 	# Building out the "Information" page
 	if selection == "Information":
 		st.info("General Information")
 		# You can read a markdown file from supporting resources folder
-		st.markdown("Some information here")
+		st.markdown(markdown_content)
 
+	# Created a list of images to be shown once a prediction is made and their paths 
+	images ={
+	"business": "../Images/Business.jpg",
+	"education": "../Images/Education.jpg",
+	"entertainment": "../Images/Entertainment.jpg",
+	"sports": "../Images/Sports.jpg",
+	"technology": "../Images/technology.jpg"
+	}
+
+	# Created a list of models and their paths to the saved models
 	models = {
-    "SVM": "SVM.pkl",
+    "SVC": "SVM.pkl",
+	"LogisticRegression": "LogisticRegression.pkl",
     "Naive_Bayes": "Naive_Bayes.pkl"}
 
 	model_choice = st.sidebar.selectbox("Select Model", list(models.keys()))
-
-
 		
 	# Building out the predication page
 	if selection == "Prediction":
@@ -86,7 +104,7 @@ def main():
 			# more human interpretable.
 			#st.success("Text Categorized as: {}".format(prediction))
 			st.success(f"Text Categorized as: {prediction[0]} using {model_choice}")
-
+			st.image(images[prediction[0]], caption='', use_container_width=True)
 			#if hasattr(predictor, "predict_proba"):
     			#proba = predictor.predict_proba(vect_text)
    				#st.write("Prediction Probabilities:", proba)
